@@ -1,0 +1,21 @@
+extends common/layout 
+
+block layout-content 
+  section#hero(class="jumbotron text-center bg-primary text-white")
+    .container
+      h1.display-4 Welcome to ShopEasy!
+      p.lead Your one-stop online store for the freshest groceries at unbeatable prices.
+      a.btn.btn-light.btn-lg(href="#featured") Shop Now
+
+  section#featured.my-5
+    .container
+      h2.text-center.mb-4 Featured Products
+      .row
+        each product in groceries
+          .col-md-3.col-sm-6.mb-4
+            .card.shadow-sm
+              .card-body
+                h5.card-title= product.name
+                p.card-text #{product.brand}
+                p.card-text $#{product.price}
+                button.btn.btn-success Add to Cart

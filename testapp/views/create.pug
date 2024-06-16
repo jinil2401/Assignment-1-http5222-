@@ -1,0 +1,20 @@
+extends common/layout
+
+block layout-content
+  .main-content.container
+    h1.page-title.mb-4 Add a New Gym Product 
+    form(action="/admin/create/submit" method="post" class="row g-3")
+      .col-md-6
+        label(for="name" class="form-label") Model 
+        input#name.form-control(type="text" name="model" required)
+      .col-md-6
+        label(for="brand" class="form-label") Brand
+        input#brand.form-control(type="text" name="brand" required)
+      .col-md-6
+        label(for="rating" class="form-label") Rating
+        input#rating.form-control(type="number" step="0.1" name="rating" required)
+      .col-md-6
+        label(for="price" class="form-label") Price
+        input#price.form-control(type="number" step="0.01" name="price" required)
+      .col-12
+        button(type="submit" class="btn btn-primary") Add Toy

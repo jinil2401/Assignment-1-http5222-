@@ -1,0 +1,14 @@
+extends common/layout
+
+block layout-content
+    .main-content.container
+        h1.page-title.mb-4 Products
+        .row
+            each Gym in Gym
+                .col-md-4.mb-3
+                    .card
+                        .card-body
+                            h5.card-title= Gym.Productmodel
+                            p.card-text Brand: #{Gym.brand}
+                            p.card-text Rating: #{Gym.rating}
+                            p.card-text Price: $#{Gym.price}

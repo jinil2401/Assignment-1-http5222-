@@ -1,66 +1,62 @@
-const mongoose = require("mongoose"); //import Mongoose
+const mongoose = require("mongoose"); 
 
 const dbUrl = `mongodb+srv://${process.env.DBUSER}:${process.env.DBPWD}@${process.env.DBHOST}`;
 
-//set up Camera Schema and model
-const CameraSchema = new mongoose.Schema({
-  model: String,
+const GymSchema = new mongoose.Schema({
+  Productmodel: String,
   brand: String,
-  category: String,
-  make: Number,
   rating: Number,
   price: Number,
 });
 
-const Camera = mongoose.model("Camera", CameraSchema);
+const Gym = mongoose.model("Gym", GymSchema);
 
-//MONGODB FUNCTIONS
+
 async function connect() {
-  await mongoose.connect(dbUrl); //connect to mongodb
+  await mongoose.connect(dbUrl); 
 }
 
-//Get all cameras from the cameras collection
-async function getCameras() {
+async function getGyms() {
   await connect();
-  return await Camera.find({});
+  return await Gym.find({});
 }
-//Initialize cameras collection with some data.
-async function initializeCameras() {
-  const cameraList = [
+
+async function initializeGyms() {
+  const GymList = [
     {
-      model: "Hero 6",
-      brand: "Go PRO",
-      category: "Action Camera",
-      make: "2022",
+      Productmodel: "Treadmill",
+      brand: "Matrix",
       rating: 4.2,
-      price: 289,
+      price: 6898,
+    },
+    {
+      Productmodel: "Bench-press",
+      brand: "Matrix",
+      rating: 4.8,
+      price: 2098,
     },
   ];
-  await Camera.insertMany(cameraList);
+  await Gym.insertMany(GymList);
 }
-//Function to add a camera to the cameras collection
-async function addCamera(
-  cameraModel,
-  cameraBrand,
-  cameraCategory,
-  cameraMake,
-  cameraRating,
-  cameraPrice
+
+async function addGyms(
+  GymModel,
+  GymBrand,
+  GymRating,
+  GymPrice
 ) {
-  let newCamera = new Camera({
-    model: cameraModel,
-    brand: cameraBrand,
-    category: cameraCategory,
-    make: cameraMake,
-    rating: cameraRating,
-    price: cameraPrice,
+  let newGym = new Gym({
+    model: GymModel,
+    brand: GymBrand,
+    rating: GymRating,
+    price: GymPrice,
   });
-  //this is the line which actually saves newCamera to the DB
-  newCamera.save();
+
+  newGym.save();
 }
 
 module.exports = {
-  getCameras,
-  initializeCameras,
-  addCamera,
+  getGyms,
+  initializeGyms,
+  addGyms,
 };

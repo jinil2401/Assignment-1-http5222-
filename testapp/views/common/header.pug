@@ -1,13 +1,15 @@
-html
-  head
-    title Grocery
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    // Link to Bootstrap CSS
-    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css')
-    link(rel='stylesheet', href='/css/styles.css') 
+header#header 
+  nav.navbar.navbar-expand-lg.bg-body-tertiary
+    .container-fluid
+      a.navbar-brand(href='#') Gym Products 
+      button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNav.collapse.navbar-collapse
+        ul.navbar-nav
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='#') Home
+          li.nav-item
+            a.nav-link(href='/about') About Us
+          li.nav-item
+            a.nav-link(href='/return') Return 
 
-    // Scripts for Bootstrap
-    script(src='https://code.jquery.com/jquery-3.5.1.slim.min.js')
-    script(src='https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js')
-    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js')

@@ -1,21 +1,16 @@
-extends common/layout 
+extends common/layout
 
-block layout-content 
-  section#hero(class="jumbotron text-center bg-primary text-white")
-    .container
-      h1.display-4 Welcome to ShopEasy!
-      p.lead Your one-stop online store for the freshest groceries at unbeatable prices.
-      a.btn.btn-light.btn-lg(href="#featured") Shop Now
+block layout-content
+  .main-content.container
+    h1.page-title.mb-4 Gym Product 
+    .row
+      each Gym in Gym
+        .col-md-4.mb-3
+          .card
+            .card-body
+              h5.card-title= Gym.Productmodel 
+              p.card-text Brand: #{Gym.brand}
+              p.card-text Rating: #{Gym.rating}
+              p.card-text Price: $#{Gym.price}
 
-  section#featured.my-5
-    .container
-      h2.text-center.mb-4 Featured Products
-      .row
-        each product in groceries
-          .col-md-3.col-sm-6.mb-4
-            .card.shadow-sm
-              .card-body
-                h5.card-title= product.name
-                p.card-text #{product.brand}
-                p.card-text $#{product.price}
-                button.btn.btn-success Add to Cart
+
